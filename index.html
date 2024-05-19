@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OTP</title>
+    <script src="js/sha.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<h2 style="text-align: center; color: #337ab7;">OTP工具</h2>
+<br>
+<div class="card">
+    <div class="card-body" style="text-align: center; margin:10px;">
+        <h5 class="card-title">密钥列表</h5>
+        <h6 class="card-subtitle mb-2 text-muted">这里有所有密钥，请妥善保管</h6>
+<!--        上半部分，添加，删除部分-->
+        <div class="shang">
+            <button type="button" class="btn btn-primary" id="add">添加密钥</button>
+            <button type="button" class="btn btn-primary" id="add_qrcode">使用二维码添加</button>
+            <button type="button" class="btn btn-danger" id="del" onclick="_deleteAll()">删除全部密钥</button>
+        </div>
+        <br>
+        <div class="xia">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">序号</th>
+                    <th scope="col">密钥</th>
+                    <th scope="col">名称</th>
+                    <th scope="col">时间验证码</th>
+                    <th scope="col">有效期</th>
+                    <th scope="col">操作</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+<dialog id="addDialog">
+    <form id="addForm">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name(名称)</label>
+            <input type="text" class="form-control" id="name" aria-describedby="nameHelp">
+        </div>
+        <div class="mb-3">
+            <label for="secret" class="form-label">Secret(密钥)</label>
+            <input type="text" class="form-control" id="secret">
+        </div>
+        <button type="submit" class="btn btn-primary">添加</button>
+        <button type="button" class="btn btn-secondary" id="cancel">取消</button>
+    </form>
+</dialog>
+<dialog id="addQrcode">
+    <form id="addQrcodeForm">
+        <input type="file" id="file" accept="image/*">
+        <button type="submit" class="btn btn-primary">添加</button>
+        <button type="button" class="btn btn-secondary" id="cancel2">取消</button>
+    </form>
+    <img id="image" style="display: none; " src="">
+</dialog>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jsqr.js"></script>
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/OTP.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
