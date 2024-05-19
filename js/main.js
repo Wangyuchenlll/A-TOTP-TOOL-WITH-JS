@@ -82,6 +82,7 @@ function closeDialog2() {
     document.getElementById("addQrcode").close();
 }
 function add(secret, name) {
+    sessionStorage
     //先读取session
     // for (let i = 0; true; i++) {
     //     if (sessionStorage.getItem(i + 1) === null){
@@ -95,19 +96,19 @@ function add(secret, name) {
     //     }
     // }
     const x = {
-        "id": sessionStorage.length + 1,
+        "id": localStorage.length + 1,
         "name": name,
         "secret": secret
     };
-     sessionStorage.setItem(sessionStorage.length + 1, JSON.stringify(x));
+    localStorage.setItem(localStorage.length + 1, JSON.stringify(x));
 }
 function get() {
     let add_html = "";
-    for (let i = 1; i <= sessionStorage.length; i++) {
-        if (sessionStorage.getItem(i) === null) {
+    for (let i = 1; i <= localStorage.length; i++) {
+        if (localStorage.getItem(i) === null) {
             continue;
         }
-        const x = JSON.parse(sessionStorage.getItem(i));
+        const x = JSON.parse(localStorage.getItem(i));
         //获取时间
         // 计算剩余时间（以毫秒为单位）
         let time_end = getExpireTime();
@@ -156,11 +157,11 @@ function scanQRCode(blobUrl,callback) {
     qrCode.src = image.src;
 }
 function _delete(id) {
-    sessionStorage.removeItem(id);
+    localStorage.removeItem(id);
     location.reload();
 }
 function _deleteAll() {
-    sessionStorage.clear();
+    localStorage.clear();
     location.reload();
 }
 //计算过期时间
